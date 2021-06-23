@@ -25,6 +25,7 @@ facility_data <- parking_list[[2]]
 logger::log_info("write data")
 
 data.table::fwrite(x = area_data, file = path_area, append = file.exists(path_area))
+data.table::fwrite(x = facility_data, file = path_facility, append = file.exists(path_facility))
 
 
 logger::log_info(" --------   done   -------- ")
