@@ -24,6 +24,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-renv-
 
+      - name: check path
+        shell: pwd
+
       - name: Restore packages
         shell: Rscript {0}
         run: |
@@ -31,7 +34,7 @@ jobs:
           renv::restore()
 
       - name: request data
-        run: Rscript parkingdata.R
+        run: Rscript code/parkingdata.R
 
       - name: commit changes
         run: |
