@@ -1,7 +1,6 @@
 on:
-  push:
-  #schedule:
-  #- cron: '*/5 * * * *'
+  schedule:
+  - cron: '*/5 * * * *'
 
 
 jobs:
@@ -23,11 +22,6 @@ jobs:
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-renv-
-
-      - name: check path
-        shell: Rscript {0}
-        run: |
-          getwd()
 
       - name: Restore packages
         shell: Rscript {0}
