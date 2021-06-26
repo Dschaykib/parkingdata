@@ -41,9 +41,9 @@ readme_text <- c(
   "## Parking data",
   "The data is provided by the [open data collection of the city](https://www.offenedaten.frankfurt.de/).",
   "",
-  paste0("The last call was at ", last_call, " CEST"),
-  paste0("Number of calls   : ", sprintf(paste0("%", num_format, "d"), num_calls)),
-  paste0("Number of stations: ", sprintf(paste0("%", num_format, "d"), num_carparks)),
+  paste0("The last call was at ", last_call, " CEST"), "",
+  paste0("Number of calls   : ", sprintf(paste0("%", num_format, "d"), num_calls)), "",
+  paste0("Number of stations: ", sprintf(paste0("%", num_format, "d"), num_carparks)), "",
   paste0("Number of areas   : ", sprintf(paste0("%", num_format, "d"), num_areas)),
   ""
 )
