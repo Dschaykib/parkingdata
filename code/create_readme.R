@@ -29,7 +29,8 @@ num_calls <- uniqueN(c(area_data$TIME, facility_data$TIME))
 num_carparks <- uniqueN(facility_data$id)
 num_areas <- uniqueN(area_data$id)
 
-num_format <- max(nchar(c(num_calls, num_areas, num_carparks)))
+time_range <- floor(as.numeric(range(diff(unique(area_data$TIME)), diff(unique(area_data$TIME)))))
+num_format <- max(nchar(c(num_calls, num_areas, num_carparks, time_range)))
 
 ## write readme file
 logger::log_info("write readme file")
@@ -41,10 +42,13 @@ readme_text <- c(
   "## Parking data",
   "The data is provided by the [open data collection of the city](https://www.offenedaten.frankfurt.de/).",
   "",
-  paste0("The last call was at ", last_call, " CEST"), "",
+  paste0("The last call was at ", last_call, " UTC"), "",
   paste0("Number of calls   : ", sprintf(paste0("%", num_format, "d"), num_calls)), "",
   paste0("Number of stations: ", sprintf(paste0("%", num_format, "d"), num_carparks)), "",
-  paste0("Number of areas   : ", sprintf(paste0("%", num_format, "d"), num_areas)),
+  paste0("Number of areas   : ", sprintf(paste0("%", num_format, "d"), num_areas)), "",
+  paste0("Time step range   : ",
+         paste0(sprintf(paste0("%", num_format, "d"), time_range), collapse = " - "),
+         " minutes"),
   ""
 )
 
