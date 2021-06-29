@@ -1,11 +1,11 @@
 on:
   schedule:
-  - cron: '*/5 * * * *'
+  - cron: '* */8 * * *'
 
 
 jobs:
-  gatherdata:
-    name: gatherdata
+  gather_eventdata:
+    name: gather_eventdata
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -30,7 +30,7 @@ jobs:
           renv::restore()
 
       - name: request data
-        run: Rscript code/parkingdata.R
+        run: Rscript code/eventdata.R
 
       - name: update README
         run: Rscript code/create_readme.R
@@ -41,7 +41,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add ./data
           git add README.md
-          git commit -m "adding data"
+          git commit -m "adding event data"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
