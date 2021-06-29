@@ -14,7 +14,7 @@ logger::log_threshold(Sys.getenv("log_level", "INFO"))
 logger::log_info(" -------- starting -------- ")
 
 ## setup variables
-days_ahead <- 1:2
+days_ahead <- 0:8
 days <- format(Sys.Date()+days_ahead, "%Y/%m/%d")
 base_url <- "https://stadtleben.de/frankfurt/kalender/"
 url_all <- paste0(base_url, days)
