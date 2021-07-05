@@ -58,7 +58,7 @@ get_evet_data <- function(url) {
   out[, eventdate := as.IDate(event_date, format = "%d.%m.%Y")]
   out[, request := Sys.time()]
   # removing "
-  out$eventtitle <- gsub('"', '', event_data$eventtitle)
+  out$eventtitle <- gsub('"', '', out$eventtitle)
 
   return(out)
 }
