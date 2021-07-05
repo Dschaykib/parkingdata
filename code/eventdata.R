@@ -23,6 +23,7 @@ path_events <- "data/events.csv"
 
 ## request event data
 event_data_list <- lapply(X = url_all, FUN = get_evet_data)
+logger::log_info("done reqeusting data")
 
 ## load previous data and combine results
 
@@ -47,7 +48,9 @@ event_data <- event_data[, list("views" = max(views),
 
 event_data <- unique(event_data)
 logger::log_info(paste0("Adding new events: ",
-                        event_data[request == max(request), .N]))
+                        sum(!unique(event_data$eventtitle) %in%
+                              unique(event_data_prev$eventtitle))))
+
 
 logger::log_info("write data")
 data.table::fwrite(x = event_data,
