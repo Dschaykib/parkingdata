@@ -39,13 +39,14 @@ event_data <- rbindlist(c(list(event_data_prev), event_data_list),
 
 ## when there are multiple requests per day, take the maximum number of views
 col_order <- names(event_data)
+event_data[, request_date := as.IDate(request)]
 this_key <- setdiff(names(event_data), c("views", "request"))
 event_data <- event_data[, list("views" = max(views),
                                 "request" = max(request)),
                          by = this_key
                          ][, .SD, .SDcols = col_order]
 
-
+event_data[, request_date := NULL]
 event_data <- unique(event_data)
 logger::log_info(paste0("Adding new events: ",
                         sum(!unique(event_data$eventtitle) %in%
@@ -56,6 +57,6 @@ logger::log_info("write data")
 data.table::fwrite(x = event_data,
                    file = path_events,
                    sep = ";",
-                   append = file.exists(path_events))
+                   append = FALSE)
 
 logger::log_info(" --------   done   -------- ")
