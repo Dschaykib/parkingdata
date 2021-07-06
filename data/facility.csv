@@ -9545,3 +9545,13 @@ parkingFacilityOccupancy,parkingFacilityStatus,parkingFacilityStatusTime,totalNu
 0.09400705,open,2021-07-06T04:48:00.000+02:00,80,771,45,896,851,ParkingFacility,109240[MyZeil],1.0,2021-07-06T04:52:00.508+02:00,DE-MDM-Stadt Frankfurt
 0.09031199,open,2021-07-06T04:48:00.000+02:00,55,554,0,609,609,ParkingFacility,18494[Konrad-Adenauer-Straße],1.0,2021-07-06T04:52:00.508+02:00,DE-MDM-Stadt Frankfurt
 0.0,closed,2021-07-06T04:48:00.000+02:00,,,0,0,0,ParkingFacility,24278[Karstadt],1.0,2021-07-06T04:52:00.508+02:00,DE-MDM-Stadt Frankfurt
+0.94400895,open,2021-07-06T04:58:00.000+02:00,843,50,0,893,893,ParkingFacility,24277[Börse],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.0,open,2021-07-06T04:58:00.000+02:00,0,200,150,350,200,ParkingFacility,24276[Turmcenter],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.0,open,2021-07-06T04:58:00.000+02:00,0,407,0,407,407,ParkingFacility,18944[Alte Oper],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.046703298,open,2021-07-06T04:58:00.000+02:00,17,347,0,364,364,ParkingFacility,24281[Hauptbahnhof Süd],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.27564895,open,2021-07-06T04:58:00.000+02:00,223,586,0,809,809,ParkingFacility,24279[Konstabler],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.471831,open,2021-07-06T04:58:00.000+02:00,201,225,0,426,426,ParkingFacility,18497[Hauptwache],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.0,closed,2021-07-06T04:58:00.000+02:00,,,0,0,0,ParkingFacility,18495[Am Gericht],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.09400705,open,2021-07-06T04:58:00.000+02:00,80,771,45,896,851,ParkingFacility,109240[MyZeil],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.09031199,open,2021-07-06T04:58:00.000+02:00,55,554,0,609,609,ParkingFacility,18494[Konrad-Adenauer-Straße],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
+0.0,closed,2021-07-06T04:58:00.000+02:00,,,0,0,0,ParkingFacility,24278[Karstadt],1.0,2021-07-06T05:02:02.307+02:00,DE-MDM-Stadt Frankfurt
