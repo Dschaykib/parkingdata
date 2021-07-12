@@ -27,7 +27,7 @@ get_parking_data <- function(url) {
   this_time <- XML::xmlToDataFrame(rootnode[[2]][1], stringsAsFactors = FALSE)[1,]
 
   # publication Town
-  this_town <- XML::xmlToDataFrame(rootnode[[2]][[2]], stringsAsFactors = FALSE)[2,]
+  #this_town <- XML::xmlToDataFrame(rootnode[[2]][[2]], stringsAsFactors = FALSE)[2,]
 
   # data
   data_names <- names(rootnode[[2]][[4]][[1]])
@@ -45,7 +45,7 @@ get_parking_data <- function(url) {
   area_data$parkingAreaReference <- NULL
   area_data <- cbind(area_data, area_station)
   area_data$TIME <- this_time
-  area_data$TOWN <- this_town
+  #area_data$TOWN <- this_town
 
   # facility
   facility_data <- XML::xmlToDataFrame(rootnode[[2]][[4]][[1]][facility_index])
@@ -57,8 +57,15 @@ get_parking_data <- function(url) {
   facility_data$parkingFacilityReference <- NULL
   facility_data <- cbind(facility_data, facility_station)
   facility_data$TIME <- this_time
-  facility_data$TOWN <- this_town
+  #facility_data$TOWN <- this_town
 
+
+  # remove columns
+  area_data$version <- NULL
+  area_data$targetClass <- NULL
+
+  facility_data$version <- NULL
+  facility_data$targetClass <- NULL
 
   #out <- rbindlist(list(area_data, facility_data), use.names = TRUE, fill = TRUE)
   out <- list(area_data, facility_data)
