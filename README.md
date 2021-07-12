@@ -19,11 +19,11 @@ Time step range   :    4 -  109 minutes
 ## Event data
 The data is extracted from [stadtleben.de](https://stadtleben.de/frankfurt/).
 
-The last call was at 2021-07-11 16:56:53 UTC
+The last call was at 2021-07-12 01:31:22 UTC
 
 Number of calls   : 122
 
-Number of events  : 184
+Number of events  : 186
 
 Time step range   : -16 -  48 hours
 
