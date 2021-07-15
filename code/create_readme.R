@@ -45,7 +45,8 @@ event_num_calls <- uniqueN(event_data$request)
 event_num_events <- uniqueN(event_data$eventtitle)
 
 # in hours
-event_time_range <- floor(range(diff(as.integer(unique(event_data$request)))) / (60*60))
+event_time_range <- floor(range(diff(unique(round(as.integer(sort(unique(
+  event_data$request))), digits = -3)))) / (60*60))
 event_num_format <- max(nchar(c(event_num_calls,
                                 event_num_events,
                                 event_time_range)))
