@@ -25,5 +25,5 @@ Number of calls   : 161
 
 Number of events  : 212
 
-Time step range   : -16 -  48 hours
+Time step range   :   8 -  48 hours
 
