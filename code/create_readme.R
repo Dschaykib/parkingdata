@@ -19,21 +19,26 @@ path_events <- "data/events.csv"
 
 ## load data
 logger::log_info("load data")
-area_data <- fread(path_area)
-facility_data <- fread(path_facility)
+area_data <- fread(path_area, fill = TRUE)
+facility_data <- fread(path_facility, fill = TRUE)
 event_data <- fread(path_events)
 
 
 ## get variables
 logger::log_info("calculate KPIs")
 # parking
-parking_last_call <- max(c(area_data$TIME, facility_data$TIME), na.rm = TRUE)
-parking_num_calls <- uniqueN(c(area_data$TIME, facility_data$TIME))
+parking_last_call <- max(c(area_data$parkingAreaStatusTime,
+                           facility_data$parkingFacilityStatusTime),
+                         na.rm = TRUE)
+parking_num_calls <- uniqueN(c(area_data$parkingAreaStatusTime,
+                               facility_data$parkingFacilityStatusTime))
 parking_num_carparks <- uniqueN(facility_data$id)
 parking_num_areas <- uniqueN(area_data$id)
 
-parking_time_range <- floor(as.numeric(range(diff(unique(area_data$TIME)),
-                                             diff(unique(area_data$TIME)))))
+parking_time_range <- floor(as.numeric(range(
+  diff(unique(area_data$parkingAreaStatusTime)),
+  diff(unique(area_data$parkingAreaStatusTime)))))
+
 parking_num_format <- max(nchar(c(parking_num_calls,
                                   parking_num_areas,
                                   parking_num_carparks,
