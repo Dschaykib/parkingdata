@@ -5,13 +5,13 @@ This repo uses the GitHub Actions to access parking and event data in Frankfurt.
 ## Parking data
 The data is provided by the [open data collection of the city](https://www.offenedaten.frankfurt.de/).
 
-The last call was at 2021-08-22 02:46:00 UTC
+The last call was at 2021-08-22 02:56:00 UTC
 
-Number of calls   : 8924
+Number of calls   : 8926
 
-Number of stations: 2870
+Number of stations: 2871
 
-Number of areas   : 2857
+Number of areas   : 2858
 
 Time step range   :    4 - 2005 minutes
 
