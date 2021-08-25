@@ -89,7 +89,9 @@ readme_text <- c(
   paste0("Time step range   : ",
          paste0(sprintf(paste0("%", event_num_format, "d"), event_time_range), collapse = " - "),
          " hours"),
-  ""
+  "",
+  "",
+  paste0("Last updated at ", as.character(Sys.time()), " UTC")
 )
 
 writeLines(text = readme_text, con = "README.md", sep = "\n")
