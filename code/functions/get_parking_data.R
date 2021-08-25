@@ -27,6 +27,9 @@ get_parking_data <- function(url) {
   rootnode <- XML::xmlRoot(result)
 
   print(rootnode)
+  if (is.null(rootnode[[2]])) {
+    stop("rootnode is empty")
+  }
   # publication Time
   this_time <- XML::xmlToDataFrame(rootnode[[2]][1], stringsAsFactors = FALSE)[1,]
 
