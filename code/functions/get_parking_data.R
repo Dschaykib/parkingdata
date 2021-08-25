@@ -28,7 +28,8 @@ get_parking_data <- function(url) {
 
   print(rootnode)
   if (is.null(rootnode[[2]])) {
-    stop("rootnode is empty")
+    logger::log_info("rootnode is empty, return list with emtpy data.tables")
+    return(list(data.table(), data.table()))
   }
   # publication Time
   this_time <- XML::xmlToDataFrame(rootnode[[2]][1], stringsAsFactors = FALSE)[1,]
