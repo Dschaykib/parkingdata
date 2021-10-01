@@ -20,8 +20,8 @@ path_area <- "data/area.csv"
 path_facility <- "data/facility.csv"
 
 ## load data
-area_data <- fread(path_area)
-facility_data <- fread(path_facility)
+area_data <- fread(path_area, fill = TRUE)
+facility_data <- fread(path_facility, fill = TRUE)
 
 ## plot sample
 plot_data <- area_data[id == "1[Anlagenring]",
@@ -29,10 +29,18 @@ plot_data <- area_data[id == "1[Anlagenring]",
 plot(plot_data)
 
 ggplot(data = area_data, aes(x = parkingAreaStatusTime, y = parkingAreaOccupancy, color = id)) +
-  geom_line()
+  geom_smooth()
 
-ggplot(data = facility_data, aes(x = TIME, y = parkingFacilityOccupancy, color = id)) +
-  geom_line()
+ggplot(data = facility_data[
+  #parkingFacilityStatusTime %between% c(as.Date("2021-07-15"),
+  #                                                                as.Date("2021-08-01"))
+],
+aes(x = parkingFacilityStatusTime,
+    y = parkingFacilityOccupancy,
+    color = id)) +
+  geom_line() +
+  geom_smooth() +
+  facet_wrap(~id, scales = "free_y")
 
 logger::log_info(" --------   desc area ----- ")
 
