@@ -19,10 +19,6 @@ path_facility <- "data/facility.csv"
 path_events <- "data/events.csv"
 
 
-if (!dir.exists(target_folder)) {
-  dir.create(target_folder)
-}
-
 ## load data
 logger::log_info("load data")
 area_data <- fread(path_area, fill = TRUE)
