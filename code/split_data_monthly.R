@@ -69,14 +69,14 @@ split_data <- function(data, path, target_folder, splitvar) {
     }
     
     
-    data.table::fwrite(x = out_data, file = this_name)
+    data.table::fwrite(x = out_data, file = this_name, sep = ";")
     
   }
   
   # removing all but the last months
   logger::log_info("saving short {this_dataname} data")
   data_short <- data.table::last(data_list)
-  data.table::fwrite(x = data_short, file = path)
+  data.table::fwrite(x = data_short, file = path, sep = ";")
   
   return(NULL)
 }
