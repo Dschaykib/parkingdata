@@ -1,4 +1,9 @@
 
+
+split_data_monthly <- function() {
+  
+
+
 # settings ----------------------------------------------------------------
 
 ## libraries
@@ -101,4 +106,6 @@ split_data(data = event_data,
 
 
 
-logger::log_info(" --------   done   -------- ")
+logger::log_info(" --------   done splitting data by month -------- ")
+
+}
