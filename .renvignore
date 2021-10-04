@@ -1,0 +1,2 @@
+# ignore idea folder in code to reduce size of renv.lock
+/code/ideas
