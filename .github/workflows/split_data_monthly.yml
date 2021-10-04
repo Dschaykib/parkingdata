@@ -1,6 +1,4 @@
 on:
-  push:
-    if: "contains(github.event.commits[0].message, '[split data]')"
   schedule:
   - cron: '13 0 1 * *'
 
