@@ -19,9 +19,9 @@ path_events <- "data/events.csv"
 
 ## load data
 logger::log_info("load data")
-area_data <- fread(path_area, fill = TRUE)
-facility_data <- fread(path_facility, fill = TRUE)
-event_data <- fread(path_events)
+area_data <- fread(path_area, fill = TRUE, sep = ";")
+facility_data <- fread(path_facility, fill = TRUE, sep = ";")
+event_data <- fread(path_events, sep = ";")
 
 
 ## get variables
