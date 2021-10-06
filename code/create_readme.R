@@ -90,6 +90,8 @@ readme_text <- c(
          " hours"),
   "",
   "",
+  "----",
+  "",
   paste0("Last updated at ", as.character(Sys.time()), " UTC")
 )
 
