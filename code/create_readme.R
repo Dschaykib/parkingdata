@@ -22,7 +22,7 @@ files_events <- list.files(path = "data/", pattern = "events", recursive = TRUE,
 logger::log_info("load data")
 area_data <- helfRlein::read_files(files = files_area, fun = fread, fill = TRUE, sep = ";")
 facility_data <- helfRlein::read_files(files = files_facility, fun = fread, fill = TRUE, sep = ";")
-events_data <- helfRlein::read_files(files = files_events, fun = fread, fill = TRUE, sep = ";")
+event_data <- helfRlein::read_files(files = files_events, fun = fread, fill = TRUE, sep = ";")
 
 ## get variables
 logger::log_info("calculate KPIs")
