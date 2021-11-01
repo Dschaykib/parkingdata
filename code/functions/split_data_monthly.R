@@ -113,7 +113,7 @@ na_archive <- list.files(path = "data/archiv/",
                          pattern = "NA_NA",
                          recursive = TRUE)
 
-if (lenght(na_archive) != 0) {
+if (length(na_archive) != 0) {
   logger::log_error("Something went wrong while saving the following archives:\n",
                     paste0(na_archive, collapse = "\n"))
   stop("Most likely wrong data saving: , to ;")
