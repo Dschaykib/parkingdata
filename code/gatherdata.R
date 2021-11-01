@@ -116,7 +116,7 @@ archiv_files <- list.files(path = "data/archiv/",
                            pattern = this_lable,
                            recursive = TRUE)
 
-if (length(archiv_files) == 0) {
+if (length(archiv_files) != 3) {
   split_data_monthly()
 }
 
