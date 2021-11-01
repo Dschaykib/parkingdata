@@ -26,9 +26,9 @@ path_events <- "data/events.csv"
 
 ## load data
 logger::log_info("load data")
-area_data <- fread(path_area, fill = TRUE)
-facility_data <- fread(path_facility, fill = TRUE)
-event_data <- fread(path_events)
+area_data <- fread(path_area, fill = TRUE, sep = ";")
+facility_data <- fread(path_facility, fill = TRUE, sep = ";")
+event_data <- fread(path_events, sep = ";")
 
 
 split_data <- function(data, path, target_folder, splitvar) {
@@ -59,7 +59,7 @@ split_data <- function(data, path, target_folder, splitvar) {
     
     if (file.exists(this_name)) {
       logger::log_info("rewriting {this_name}")
-      prev_data <- data.table::fread(this_name)
+      prev_data <- data.table::fread(this_name, sep = ";")
       
       out_data <- unique(data.table::rbindlist(
         list(prev_data, data_list[[i_data]]),
