@@ -4,6 +4,7 @@
 ## libraries
 library(data.table)
 library(logger)
+library(helfRlein)
 
 ## functions
 check <- lapply(X = list.files("code/functions", full.names = TRUE), FUN =  source)
@@ -13,16 +14,15 @@ logger::log_threshold(Sys.getenv("log_level", "INFO"))
 logger::log_info(" -------- updating readme file")
 
 ## variables
-path_area <- "data/area.csv"
-path_facility <- "data/facility.csv"
-path_events <- "data/events.csv"
+files_area <- list.files(path = "data/", pattern = "area", recursive = TRUE, full.names = TRUE)
+files_facility <- list.files(path = "data/", pattern = "facility", recursive = TRUE, full.names = TRUE)
+files_events <- list.files(path = "data/", pattern = "events", recursive = TRUE, full.names = TRUE)
 
 ## load data
 logger::log_info("load data")
-area_data <- fread(path_area, fill = TRUE, sep = ";")
-facility_data <- fread(path_facility, fill = TRUE, sep = ";")
-event_data <- fread(path_events, sep = ";")
-
+area_data <- helfRlein::read_files(files = files_area, fun = fread, fill = TRUE, sep = ";")
+facility_data <- helfRlein::read_files(files = files_facility, fun = fread, fill = TRUE, sep = ";")
+events_data <- helfRlein::read_files(files = files_events, fun = fread, fill = TRUE, sep = ";")
 
 ## get variables
 logger::log_info("calculate KPIs")
