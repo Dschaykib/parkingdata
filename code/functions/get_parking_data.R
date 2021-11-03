@@ -20,7 +20,8 @@ get_parking_data <- function(url) {
     # url <- https://www.offenedaten.frankfurt.de/dataset/parkdaten-dynamisch/resource/48378186-5732-41f3-9823-9d1938f2695e
     stop()
   } else {
-    print(result)
+    logger::log_info(paste0("url call succesful"))
+    #print(result)
   }
 
   logger::log_info("convert parking data from XML format")
