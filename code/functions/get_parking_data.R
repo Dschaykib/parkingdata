@@ -21,13 +21,11 @@ get_parking_data <- function(url) {
     stop()
   } else {
     logger::log_info(paste0("url call succesful"))
-    #print(result)
   }
 
   logger::log_info("convert parking data from XML format")
   rootnode <- XML::xmlRoot(result)
 
-  print(rootnode)
   if (is.null(rootnode[[2]])) {
     logger::log_info("rootnode is empty, return list with emtpy data.tables")
     return(list(data.table(), data.table()))
