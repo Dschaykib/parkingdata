@@ -7,6 +7,7 @@ library(XML)
 library(data.table)
 library(logger)
 library(ggplot2)
+library(helfRlein)
 
 ## functions
 check <- lapply(X = list.files("code/functions", full.names = TRUE), FUN =  source)
@@ -16,19 +17,24 @@ logger::log_threshold(Sys.getenv("log_level", "INFO"))
 logger::log_info(" -------- starting -------- ")
 
 ## variables
-path_area <- "data/area.csv"
-path_facility <- "data/facility.csv"
+
+area_files <- list.files(path = "data/", pattern = "area", recursive = TRUE, full.names = TRUE)
+facility_files <- list.files(path = "data/", pattern = "facility", recursive = TRUE, full.names = TRUE)
+event_files <- list.files(path = "data/", pattern = "event", recursive = TRUE, full.names = TRUE)
+
 
 ## load data
-area_data <- fread(path_area, fill = TRUE)
-facility_data <- fread(path_facility, fill = TRUE)
+area_data <- helfRlein::read_files(files = area_files, fun = fread, fill = TRUE)
+facility_data <- helfRlein::read_files(files = facility_files, fun = fread, fill = TRUE)
+event_data <- helfRlein::read_files(files = event_files, fun = fread, fill = TRUE)
+
 
 ## plot sample
 plot_data <- area_data[id == "1[Anlagenring]",
                        list(parkingAreaStatusTime, parkingAreaOccupancy)]
 plot(plot_data)
-
-ggplot(data = area_data, aes(x = parkingAreaStatusTime, y = parkingAreaOccupancy, color = id)) +
+#parkingAreaStatusTime
+ggplot(data = area_data, aes(x = TIME, y = parkingAreaOccupancy, color = id)) +
   geom_smooth()
 
 ggplot(data = facility_data[
