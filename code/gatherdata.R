@@ -58,6 +58,7 @@ event_freq <- 8*60*60 # every 8 hours
 # get previous data
 if (file.exists(path_events)) {
   event_data_prev <- fread(file = path_events, sep = ";")
+  event_data_prev <- event_data_prev[!is.na(eventtitle) & eventtitle != "",]
   last_event_call <- max(event_data_prev$request, na.rm = TRUE)
 } else {
   event_data_prev <- data.table()
@@ -77,7 +78,12 @@ if (last_event_call <= Sys.time() - event_freq) {
   ## load previous data and combine results
   
   
-  event_data <- rbindlist(c(list(event_data_prev), event_data_list),
+  event_data_list <- data.table::rbindlist(event_data_list,
+                                      use.names = TRUE,
+                                      fill = TRUE)
+  
+  event_data <- data.table::rbindlist(list(event_data_prev,
+                            event_data_list),
                           use.names = TRUE,
                           fill = TRUE)
   
@@ -85,8 +91,11 @@ if (last_event_call <= Sys.time() - event_freq) {
   col_order <- names(event_data)
   event_data[, request_date := as.IDate(request)]
   this_key <- setdiff(names(event_data), c("views", "request"))
-  event_data <- event_data[, list("views" = max(views),
-                                  "request" = max(request)),
+  
+  #event_data[, eventtitle := stringi::stri_trans_general(eventtitle, "latin-ascii")]
+  
+  event_data <- event_data[, list("views" = max(views, na.rm = TRUE),
+                                  "request" = max(request, na.rm = TRUE)),
                            by = this_key
   ][, .SD, .SDcols = col_order]
   
